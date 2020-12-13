@@ -7,6 +7,7 @@ import pandas as pd
 import plotly.express as px
 import datetime
 
+server = app.server
 
 
 
@@ -20,6 +21,7 @@ markdown_text = '''
 
 Beacuse we love deep leraning, web and arts.
 '''
+server = app.server
 
 app.layout = html.Div([
     dcc.Upload(
