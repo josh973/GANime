@@ -7,6 +7,3 @@ streamlit==0.69.2
 Flask==1.1.2
 pandas==0.25.3
 gunicorn==20.0.4
-https://download.pytorch.org/whl/cpu/torch-1.1.0-cp37-cp37m-linux_x86_64.whl
-https://download.pytorch.org/whl/cpu/torchvision-0.3.0-cp37-cp37m-linux_x86_64.whl
-Pillow==6.2.1
