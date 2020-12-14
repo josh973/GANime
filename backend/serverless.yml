@@ -11,18 +11,31 @@
 #
 # Happy Coding!
 
-service: selfiegan
+service: backend
 # app and org for use with dashboard.serverless.com
-app: selfieganback
-org: includedvc
+#app: your-app-name
+#org: your-org-name
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
 frameworkVersion: '2'
+# The provider section where we setup the provider, the runtime and the permissions:
 
 provider:
   name: aws
-  runtime: python3.8
+  runtime: python3.7
+  profile: cartoonify
+  region: eu-west-3
+  timeout: 60
+  iamRoleStatements:
+      - Effect: Allow
+      Action:
+          - s3:getObject
+      Resource: arn:aws:s3:::cartoongan/models/*
+      - Effect: Allow
+      Action:
+          - "lambda:InvokeFunction"
+      Resource: "*"
 
 # you can overwrite defaults here
 #  stage: dev
@@ -111,3 +124,60 @@ functions:
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"
+
+# The custom section where we configure the plugins:
+custom:
+  pythonRequirements:
+  dockerizePip: true
+  zip: true
+  slim: true
+  strip: false
+  noDeploy:
+    - docutils
+    - jmespath
+    - pip
+    - python-dateutil
+    - setuptools
+    - six
+    - tensorboard
+  useStaticCache: true
+  useDownloadCache: true
+  cacheLocation: "./cache"
+  warmup:
+  events:
+    - schedule: "rate(5 minutes)"
+  timeout: 50
+
+  # The package section where we exclude folders from production
+package:
+  individually: false
+  exclude:
+    - package.json
+    - package-log.json
+    - node_modules/**
+    - cache/**
+    - test/**
+    - __pycache__/**
+    - .pytest_cache/**
+    - model/pytorch_model.bin
+    - raw/**
+    - .vscode/**
+    - .ipynb_checkpoints/**
+
+# The functions section where we create the Lambda function and define the events that invoke it:
+functions:
+  transformImage:
+    handler: src/handler.lambda_handler
+    memorySize: 3008
+    timeout: 300
+    events:
+      - http:
+          path: transform
+          method: post
+          cors: true
+    warmup: true
+
+# and finally the plugins section:
+plugins:
+  - serverless-python-requirements
+  - serverless-plugin-warmup
