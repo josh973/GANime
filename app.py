@@ -7,7 +7,7 @@ import pandas as pd
 import plotly.express as px
 import datetime
 
-server = app.server
+
 
 
 
