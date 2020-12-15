@@ -11,6 +11,7 @@
 #
 # Happy Coding!
 
+# **** ----- on the video it's service: cartoonify be careful if it's it didn't work for this reasons *****
 service: backend
 # app and org for use with dashboard.serverless.com
 #app: your-app-name
@@ -28,10 +29,10 @@ provider:
   region: eu-west-3
   timeout: 60
   iamRoleStatements:
-      - Effect: Allow
-      Action:
-          - s3:getObject
-      Resource: arn:aws:s3:::cartoongan/models/*
+      - Effect: "Allow"
+      Action: 
+        - "s3:getObject"
+      Resource: arn:aws:s3:::ganmodels/*
       - Effect: Allow
       Action:
           - "lambda:InvokeFunction"
