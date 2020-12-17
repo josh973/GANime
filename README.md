@@ -1,5 +1,7 @@
 # GANime
 ![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/josh973/GANime/streamlit.py)
+
+
 GANime is a Streamlit app transforming selfie (or any photo) in Painting Portrait with various Japanese anime style.
 It's using different GAN models trained on GPU.
 
