@@ -5,7 +5,9 @@
 GANime is a Streamlit app transforming selfie (or any photo) in Painting Portrait with various Japanese anime style.
 It's using different GAN models trained on GPU.
 
-Runing after cloning the repo:
+#Install
+After cloning the repo
+run the following:
 
 ```bash
 pip install -r requirements.txt
