@@ -4,13 +4,13 @@ It's using different GAN models trained on GPU.
 
 Runing after cloning the repo:
 
-'''bash
+```bash
 pip install -r requirements.txt
-'''
+```
 
 
-'''bash
+```bash
 streamlit run app.py 
-'''
+```
 
 You will run the deep learning model locally training only with your CPU (largely enougth for most image size and style)
