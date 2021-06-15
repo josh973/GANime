@@ -4,6 +4,7 @@
 
 GANime is a Streamlit app transforming selfie (or any photo) in Painting Portrait with various Japanese anime style.
 It's using different GAN models trained on GPU.
+But you don't need GPU to run them.
 
 ##Install
 After cloning the repo
@@ -18,4 +19,4 @@ pip install -r requirements.txt
 streamlit run app.py 
 ```
 
-You will run the deep learning model locally training only with your CPU (largely enougth for most image size and style)
+You will run the deep learning model locally training only with your CPU (largely enougth for most image size and style).
